@@ -2,8 +2,8 @@
 // Created by 18201 on 2025/12/19.
 //
 
-#ifndef HORIZONSURVIVAL_OBJECT_H
-#define HORIZONSURVIVAL_OBJECT_H
+#ifndef GHOSTESCAPE_OBJECT_H
+#define GHOSTESCAPE_OBJECT_H
 
 #include "game.h"
 
@@ -24,4 +24,4 @@ public:
 };
 
 
-#endif //HORIZONSURVIVAL_OBJECT_H
+#endif //GHOSTESCAPE_OBJECT_H

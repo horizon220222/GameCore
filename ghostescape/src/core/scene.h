@@ -2,27 +2,33 @@
 // Created by 18201 on 2025/12/19.
 //
 
-#ifndef HORIZONSURVIVAL_SCENE_H
-#define HORIZONSURVIVAL_SCENE_H
+#ifndef GHOSTESCAPE_SCENE_H
+#define GHOSTESCAPE_SCENE_H
 
 #include "object.h"
 
 class Scene: public Object
 {
 protected:
-    glm::vec2 camera_position_ = glm::vec2(0);
-    std::vector<Object*> objects_;
+    glm::vec2 camera_position_ = glm::vec2(0);  // 相机位置
+    glm::vec2 world_size_ = glm::vec2(0); // 世界大小
+    std::vector<Object*> objects_; // 场景中的物体
 public:
-    // 所有的类，不在构造函数和析构函数里面做任何事
-    Scene() = default;
-    virtual ~Scene() = default;
+    void init() override {}
+    void handleEvents(SDL_Event& event) override {}
+    void update(float dt) override {}
+    void render() override {}
+    void clean() override {}
 
-    virtual void init() {}
-    virtual void handleEvents(SDL_Event& event) {}
-    virtual void update(float dt) {}
-    virtual void render() {}
-    virtual void clean() {}
+    [[nodiscard]] glm::vec2 worldToScreen(const glm::vec2 &world_position) const {return world_position - camera_position_; }
+    [[nodiscard]] glm::vec2 screenToWorld(const glm::vec2 &screen_position) const {return screen_position + camera_position_; }
+
+    [[nodiscard]] glm::vec2 getWorldSize() const { return world_size_; }
+    void setWorldSize(const glm::vec2 &world_size) { world_size_ = world_size; }
+
+    [[nodiscard]] glm::vec2 getCameraPosition() const { return camera_position_; }
+    void setCameraPosition(const glm::vec2 &camera_position);
 };
 
 
-#endif //HORIZONSURVIVAL_SCENE_H
+#endif //GHOSTESCAPE_SCENE_H

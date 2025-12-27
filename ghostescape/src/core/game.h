@@ -1,5 +1,5 @@
-#ifndef HORIZONSURVIVAL_GAME_H
-#define HORIZONSURVIVAL_GAME_H
+#ifndef GHOSTESCAPE_GAME_H
+#define GHOSTESCAPE_GAME_H
 
 #include <string>
 #include <SDL3/SDL.h>
@@ -50,9 +50,11 @@ public:
     void clean(); // 清理游戏资源
 
     // 工具函数
-    glm::vec2 getScreenSize() const { return screen_size_; } // 获取屏幕大小
+    [[nodiscard]] glm::vec2 getScreenSize() const { return screen_size_; } // 获取屏幕大小
+    [[nodiscard]] Scene* getCurrentScene() const { return current_scene_; } // 获取当前场景
     void drawGrid(const glm::vec2& top_left, const glm::vec2& botton_right, float grid_width, SDL_FColor fcolor); // 绘制网格
+    void drawBoundary(const glm::vec2& top_left, const glm::vec2& botton_right, float boundary_width, SDL_FColor fcolor); // 绘制边界
 };
 
 
-#endif //HORIZONSURVIVAL_GAME_H
+#endif //GHOSTESCAPE_GAME_H

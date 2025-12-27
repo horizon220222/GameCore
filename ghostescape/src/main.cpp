@@ -7,6 +7,6 @@
 int main()
 {
     Game& game = Game::GetInstance();
-    game.init("HorizonSurvival", 1280, 720);
+    game.init("GHOSTESCAPE", 1280, 720);
     game.run();
 }
