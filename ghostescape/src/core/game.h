@@ -6,11 +6,14 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <glm/glm.hpp>
+#include "asset_store.h"
 
 class Scene;
 class Game
 {
 private:
+    AssetStore* asset_store_ = nullptr; // 资源管理器
+
     // 窗口和渲染
     glm::vec2 screen_size_ = glm::vec2(0);
     SDL_Window* window_ = nullptr;
@@ -52,6 +55,8 @@ public:
     // 工具函数
     [[nodiscard]] glm::vec2 getScreenSize() const { return screen_size_; } // 获取屏幕大小
     [[nodiscard]] Scene* getCurrentScene() const { return current_scene_; } // 获取当前场景
+    [[nodiscard]] AssetStore* getAssetStore() const { return asset_store_; } // 获取资源管理器
+
     void drawGrid(const glm::vec2& top_left, const glm::vec2& botton_right, float grid_width, SDL_FColor fcolor); // 绘制网格
     void drawBoundary(const glm::vec2& top_left, const glm::vec2& botton_right, float boundary_width, SDL_FColor fcolor); // 绘制边界
 };

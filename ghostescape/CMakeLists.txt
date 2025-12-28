@@ -35,6 +35,10 @@ add_executable(${TARGET}
         src/player.cpp
         src/player.h
         src/core/scene.cpp
+        src/core/asset_store.cpp
+        src/core/asset_store.h
+        src/core/object.cpp
+        src/core/defs.h
 )
 
 ## 链接库

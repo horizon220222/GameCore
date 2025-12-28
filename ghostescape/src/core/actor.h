@@ -15,7 +15,7 @@ protected:
 
 public:
     [[nodiscard]] glm::vec2 getVelocity() const { return velocity_; }
-    void setVelocity(const glm::vec2 &velocity) { velocity_ = velocity; }
+    void setVelocity(const glm::vec2& velocity) { velocity_ = velocity; }
     [[nodiscard]] float getMaxSpeed() const { return max_speed_; }
     void setMaxSpeed(float max_speed) { max_speed_ = max_speed; }
 };

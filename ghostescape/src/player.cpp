@@ -7,15 +7,18 @@
 
 void Player::init()
 {
+    Actor::init();
     max_speed_ = 500.0f;
 }
 
 void Player::handleEvents(SDL_Event& event)
 {
+    Actor::handleEvents(event);
 }
 
 void Player::update(float dt)
 {
+    Actor::render();
     keyboardControl();
     move(dt);
     syncCamera();
@@ -23,12 +26,13 @@ void Player::update(float dt)
 
 void Player::render()
 {
+    Actor::render();
     game_.drawBoundary(render_position_ - + glm::vec2(10.0f), render_position_ + glm::vec2(10.0f), 5.0f, {1.0, 0.0, 0.0, 1.0});
 }
 
 void Player::clean()
 {
-
+    Actor::clean();
 }
 
 void Player::keyboardControl()
@@ -64,6 +68,6 @@ void Player::syncCamera()
     float smoothFactor = 0.1f; // 较小的值移动更平滑
     glm::vec2 newPos = currentPos + (targetPos - currentPos) * smoothFactor;
     game_.getCurrentScene()->setCameraPosition(newPos);
-    
+
     // game_.getCurrentScene()->setCameraPosition(position_ - game_.getScreenSize() / 2.0f);
 }

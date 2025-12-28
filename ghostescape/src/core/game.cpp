@@ -52,6 +52,9 @@ void Game::init(const std::string& title, int width, int height)
     // 计算帧延迟
     frame_delay_ = 1000000000 / FPS_;
 
+    // 创建资源管理器
+    asset_store_ = new AssetStore(renderer_);
+
     // 创建场景
     current_scene_ = new SceneMain();
     current_scene_->init();
@@ -91,6 +94,11 @@ void Game::clean()
     if (current_scene_){
         current_scene_->clean();
         delete current_scene_;
+    }
+
+    if (asset_store_){
+        asset_store_->clean();
+        delete asset_store_;
     }
 
     if (renderer_)

@@ -13,22 +13,28 @@ void SceneMain::init()
     player_ = new Player();
     player_->init();
     player_->setPosition(world_size_ / 2.0f);
+    addChild(player_);
 }
 
 void SceneMain::handleEvents(SDL_Event& event)
 {
-
+    Scene::handleEvents(event);
 }
 
 void SceneMain::update(float dt)
 {
-    player_->update(dt);
+    Scene::update(dt);
 }
 
 void SceneMain::render()
 {
+    Scene::render();
     renderBackground();
-    player_->render();
+}
+
+void SceneMain::clean()
+{
+    Scene::clean();
 }
 
 void SceneMain::renderBackground()
@@ -37,10 +43,4 @@ void SceneMain::renderBackground()
     auto start =  worldToScreen(glm::vec2(0, 0));
     auto end = worldToScreen(world_size_);
     game_.drawGrid(start, end, 80.0f, {0.5, 0.5, 0.5, 1.0});
-}
-
-void SceneMain::clean()
-{
-    player_->clean();
-    delete player_;
 }
