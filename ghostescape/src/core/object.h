@@ -15,6 +15,8 @@ protected:
 
     ObjectType type_ = ObjectType::NONE;
     std::vector<Object*> children_;
+
+    bool is_active_ = true;
 public:
     // 所有的类，不在构造函数和析构函数里面做任何事
     Object() = default;
@@ -28,6 +30,8 @@ public:
 
     ObjectType getType() const { return type_; }
     void setType(ObjectType type) { type_ = type; }
+    void setActive(bool active) { is_active_ = active; }
+    bool getActive() const { return is_active_; }
 
     virtual void addChild(Object* child) { children_.push_back(child); }
     virtual void removeChild(Object* child) {

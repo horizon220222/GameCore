@@ -4,13 +4,18 @@
 
 #ifndef GHOSTESCAPE_PLAYER_H
 #define GHOSTESCAPE_PLAYER_H
-#include "core/actor.h"
 
+#include "core/actor.h"
+#include "affiliate/sprite_anim.h"
 
 class Player: public Actor
 {
-public:
+private:
+    SpriteAnim* sprite_idle_ = nullptr;
+    SpriteAnim* sprite_move_ = nullptr;
+    bool is_moving_ = false;
 
+public:
     void init() override;
     void handleEvents(SDL_Event& event) override;
     void update(float dt) override;
@@ -20,6 +25,9 @@ public:
     void keyboardControl();
     void move(float dt);
     void syncCamera();
+
+    void checkState();
+    void changeState(bool is_moving);
 };
 
 
