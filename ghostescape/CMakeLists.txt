@@ -39,6 +39,12 @@ add_executable(${TARGET}
         src/core/asset_store.h
         src/core/object.cpp
         src/core/defs.h
+        src/core/object_affiliate.cpp
+        src/core/object_affiliate.h
+        src/affiliate/sprite.cpp
+        src/affiliate/sprite.h
+        src/affiliate/sprite_anim.cpp
+        src/affiliate/sprite_anim.h
 )
 
 ## 链接库

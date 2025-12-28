@@ -18,7 +18,7 @@ private:
     std::unordered_map<std::string, SDL_Texture*> textures_;
     std::unordered_map<std::string, TTF_Font*> fonts_;
 public:
-    explicit AssetStore(SDL_Renderer* renderer) { renderer_ = renderer; }
+    AssetStore(SDL_Renderer* renderer) { renderer_ = renderer; }
     ~AssetStore() = default;
 
     void loadImage(const std::string& file_path);

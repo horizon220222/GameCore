@@ -26,7 +26,7 @@ public:
     virtual void render();
     virtual void clean();     // 需要清理的资源，在clean()函数里面做。
 
-    [[nodiscard]] ObjectType getType() const { return type_; }
+    ObjectType getType() const { return type_; }
     void setType(ObjectType type) { type_ = type; }
 
     virtual void addChild(Object* child) { children_.push_back(child); }

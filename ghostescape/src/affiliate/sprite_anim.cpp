@@ -1,0 +1,40 @@
+//
+// Created by 18201 on 2025/12/28.
+//
+
+#include "sprite_anim.h"
+
+SpriteAnim* SpriteAnim::addSpriteAnimChild(ObjectScreen* parent, const std::string& file_path, float scale)
+{
+    auto sprite_anim = new SpriteAnim();
+    sprite_anim->init();
+    sprite_anim->setTexture(Texture(file_path));
+    sprite_anim->setScale(scale);
+    sprite_anim->setParent(parent);
+    parent->addChild(sprite_anim);
+    return sprite_anim;
+}
+
+void SpriteAnim::update(float dt)
+{
+    frame_timer_ += dt;
+    if (frame_timer_ >= 1.0f / static_cast<float>(fps_))
+    {
+        current_frame_++;
+        if (current_frame_ >= total_frames_)
+        {
+            current_frame_ = 0;
+        }
+        frame_timer_ = 0.0f;
+    }
+    texture_.src_rect.x = texture_.src_rect.w * static_cast<float>(current_frame_);
+}
+
+void SpriteAnim::setTexture(const Texture& texture)
+{
+    texture_ = texture;
+    total_frames_ = static_cast<int>(texture.src_rect.w / texture.src_rect.h);
+    // 这里限制框高一致
+    texture_.src_rect.w = texture.src_rect.h;
+    size_ = glm::vec2(texture_.src_rect.w, texture_.src_rect.h);
+}

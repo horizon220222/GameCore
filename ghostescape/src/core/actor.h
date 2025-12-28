@@ -14,9 +14,9 @@ protected:
     float max_speed_ = 100.0f; // 最大速度大小
 
 public:
-    [[nodiscard]] glm::vec2 getVelocity() const { return velocity_; }
+    glm::vec2 getVelocity() const { return velocity_; }
     void setVelocity(const glm::vec2& velocity) { velocity_ = velocity; }
-    [[nodiscard]] float getMaxSpeed() const { return max_speed_; }
+    float getMaxSpeed() const { return max_speed_; }
     void setMaxSpeed(float max_speed) { max_speed_ = max_speed; }
 };
 

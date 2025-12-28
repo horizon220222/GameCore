@@ -8,6 +8,7 @@
 #include <glm/glm.hpp>
 #include "asset_store.h"
 
+struct Texture;
 class Scene;
 class Game
 {
@@ -53,9 +54,11 @@ public:
     void clean(); // 清理游戏资源
 
     // 工具函数
-    [[nodiscard]] glm::vec2 getScreenSize() const { return screen_size_; } // 获取屏幕大小
-    [[nodiscard]] Scene* getCurrentScene() const { return current_scene_; } // 获取当前场景
-    [[nodiscard]] AssetStore* getAssetStore() const { return asset_store_; } // 获取资源管理器
+    glm::vec2 getScreenSize() const { return screen_size_; } // 获取屏幕大小
+    Scene* getCurrentScene() const { return current_scene_; } // 获取当前场景
+    AssetStore* getAssetStore() const { return asset_store_; } // 获取资源管理器
+
+    void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size); // 渲染纹理
 
     void drawGrid(const glm::vec2& top_left, const glm::vec2& botton_right, float grid_width, SDL_FColor fcolor); // 绘制网格
     void drawBoundary(const glm::vec2& top_left, const glm::vec2& botton_right, float boundary_width, SDL_FColor fcolor); // 绘制边界

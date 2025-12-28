@@ -3,12 +3,14 @@
 //
 
 #include "player.h"
+#include "affiliate/sprite_anim.h"
 #include "core/scene.h"
 
 void Player::init()
 {
     Actor::init();
     max_speed_ = 500.0f;
+    SpriteAnim::addSpriteAnimChild(this, "assets/sprite/ghost-idle.png", 2.0f);
 }
 
 void Player::handleEvents(SDL_Event& event)
@@ -18,7 +20,7 @@ void Player::handleEvents(SDL_Event& event)
 
 void Player::update(float dt)
 {
-    Actor::render();
+    Actor::update(dt);
     keyboardControl();
     move(dt);
     syncCamera();
@@ -27,7 +29,7 @@ void Player::update(float dt)
 void Player::render()
 {
     Actor::render();
-    game_.drawBoundary(render_position_ - + glm::vec2(10.0f), render_position_ + glm::vec2(10.0f), 5.0f, {1.0, 0.0, 0.0, 1.0});
+    game_.drawBoundary(render_position_, render_position_, 1.0f, {1.0, 0.0, 0.0, 1.0});
 }
 
 void Player::clean()
