@@ -15,6 +15,8 @@ void Enemy::init()
     anim_die_->setLoop(false);
 
     current_anim_ = anim_normal_;
+
+    collider_ = Collider::addColliderChild(this, current_anim_->getSize());
 }
 
 void Enemy::update(float dt)
@@ -25,7 +27,7 @@ void Enemy::update(float dt)
     aim_target(target_);
 
     move(dt);
-
+    attack();
     // 测试
     // timer_ += dt;
     // if (timer_ > 1.0f && timer_ < 2.0f) {
@@ -33,7 +35,7 @@ void Enemy::update(float dt)
     // } else if (timer_ > 2.0f) {
     //     changeState(State::DIE);
     // }
-    remove();
+    // remove();
 }
 
 void Enemy::aim_target(Player* target)
@@ -69,6 +71,15 @@ void Enemy::changeState(State new_state)
         break;
     }
     current_state_ = new_state;
+}
+
+void Enemy::attack()
+{
+    if (!collider_ || target_ == nullptr || target_->getCollider() == nullptr) return;
+    if (collider_->isColliding(target_->getCollider())) {
+        // TODO: attack
+        SDL_Log("Circle vs Circle");
+    }
 }
 
 void Enemy::remove()

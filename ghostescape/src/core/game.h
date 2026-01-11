@@ -58,8 +58,11 @@ public:
     Scene* getCurrentScene() const { return current_scene_; } // 获取当前场景
     AssetStore* getAssetStore() const { return asset_store_; } // 获取资源管理器
 
+    // 渲染函数
     void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size); // 渲染纹理
+    void renderFillCircle(const glm::vec2& position, const glm::vec2& size, float alpha);
 
+    // 工具函数
     void drawGrid(const glm::vec2& top_left, const glm::vec2& botton_right, float grid_width, SDL_FColor fcolor); // 绘制网格
     void drawBoundary(const glm::vec2& top_left, const glm::vec2& botton_right, float boundary_width, SDL_FColor fcolor); // 绘制边界
 };

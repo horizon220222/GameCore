@@ -48,6 +48,8 @@ add_executable(${TARGET}
         src/core/actor.cpp
         src/enemy.cpp
         src/enemy.h
+        src/affiliate/collider.cpp
+        src/affiliate/collider.h
 )
 
 ## 链接库

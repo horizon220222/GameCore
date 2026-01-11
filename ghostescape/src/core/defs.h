@@ -5,6 +5,8 @@
 #ifndef GHOSTESCAPE_DEFS_H
 #define GHOSTESCAPE_DEFS_H
 
+#define DEBUG_MODE
+
 enum class ObjectType
 {
     NONE,

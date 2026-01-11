@@ -34,6 +34,7 @@ public:
 
     void checkState();
     void changeState(State new_state);
+    void attack();
     void remove();
 
     // getters and setters
