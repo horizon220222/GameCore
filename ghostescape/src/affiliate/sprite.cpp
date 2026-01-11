@@ -23,14 +23,8 @@ Sprite* Sprite::addSpriteChild(ObjectScreen* parent, const std::string& file_pat
 
 void Sprite::render()
 {
-    if (texture_.texture == nullptr)
-    {
-        return;
-    }
-    if (parent_ == nullptr)
-    {
-        return;
-    }
+    if (!texture_.texture || !parent_ || is_finish_) return;
+
     auto pos = parent_->getRenderPosition() + offset_;
     game_.renderTexture(texture_, pos, size_);
 }

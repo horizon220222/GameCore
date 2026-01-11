@@ -26,6 +26,7 @@ class Sprite: public ObjectAffiliate
 {
 protected:
     Texture texture_;
+    bool is_finish_ = false;
 
 public:
     static Sprite* addSpriteChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f);
@@ -33,6 +34,8 @@ public:
     void setScale(float scale) { size_ *= scale; }
 
     // getters and setters
+    bool getFinish() const { return is_finish_; }
+    void setFinish(bool is_finish) { is_finish_ = is_finish; }
     Texture getTexture() const { return texture_; }
     virtual void setTexture(const Texture &texture);
     void setFlip(bool is_flip) { texture_.is_flip = is_flip; }

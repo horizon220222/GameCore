@@ -3,6 +3,8 @@
 //
 
 #include "scene_main.h"
+
+#include "enemy.h"
 #include "player.h"
 
 void SceneMain::init()
@@ -14,6 +16,12 @@ void SceneMain::init()
     player_->init();
     player_->setPosition(world_size_ / 2.0f);
     addChild(player_);
+
+    auto enemy = new Enemy();
+    enemy->init();
+    enemy->set_target(player_);
+    enemy->setPosition(world_size_ / 2.0f + glm::vec2(200.0f));
+    addChild(enemy);
 }
 
 void SceneMain::handleEvents(SDL_Event& event)

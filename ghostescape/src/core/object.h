@@ -17,6 +17,7 @@ protected:
     std::vector<Object*> children_;
 
     bool is_active_ = true;
+    bool need_remove_ = false;  // 提前删除，而不是回收
 public:
     // 所有的类，不在构造函数和析构函数里面做任何事
     Object() = default;
@@ -37,6 +38,8 @@ public:
     virtual void removeChild(Object* child) {
         children_.erase(std::remove(children_.begin(), children_.end(), child), children_.end());
     }
+    bool getNeedRemove() const { return need_remove_; }
+    void setNeedRemove(bool need_remove) { need_remove_ = need_remove; }
 };
 
 

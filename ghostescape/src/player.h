@@ -23,7 +23,6 @@ public:
     void clean() override;
 
     void keyboardControl();
-    void move(float dt);
     void syncCamera();
 
     void checkState();

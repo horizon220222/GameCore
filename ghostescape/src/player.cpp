@@ -63,13 +63,6 @@ void Player::keyboardControl()
     }
 }
 
-void Player::move(float dt)
-{
-    // 更新位置，位置 + 速度 * dt(时间)
-    setPosition(position_ + velocity_ * dt);
-    position_ = glm::clamp(position_, glm::vec2(0, 0), game_.getCurrentScene()->getWorldSize());
-}
-
 void Player::syncCamera()
 {
     glm::vec2 targetPos = position_ - game_.getScreenSize() / 2.0f;

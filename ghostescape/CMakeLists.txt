@@ -45,6 +45,9 @@ add_executable(${TARGET}
         src/affiliate/sprite.h
         src/affiliate/sprite_anim.cpp
         src/affiliate/sprite_anim.h
+        src/core/actor.cpp
+        src/enemy.cpp
+        src/enemy.h
 )
 
 ## 链接库
