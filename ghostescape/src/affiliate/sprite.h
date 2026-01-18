@@ -29,9 +29,8 @@ protected:
     bool is_finish_ = false;
 
 public:
-    static Sprite* addSpriteChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f);
+    static Sprite* addSpriteChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f, Anchor anchor = Anchor::CENTER);
     void render() override;
-    void setScale(float scale) { size_ *= scale; }
 
     // getters and setters
     bool getFinish() const { return is_finish_; }

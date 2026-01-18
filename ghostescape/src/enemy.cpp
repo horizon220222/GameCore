@@ -3,6 +3,7 @@
 //
 
 #include "enemy.h"
+#include "raw/stats.h"
 
 void Enemy::init()
 {
@@ -17,6 +18,7 @@ void Enemy::init()
     current_anim_ = anim_normal_;
 
     collider_ = Collider::addColliderChild(this, current_anim_->getSize());
+    stats_ = Stats::addStatsChild(this);
 }
 
 void Enemy::update(float dt)
@@ -75,10 +77,11 @@ void Enemy::changeState(State new_state)
 
 void Enemy::attack()
 {
-    if (!collider_ || target_ == nullptr || target_->getCollider() == nullptr) return;
+    if (!collider_ || target_ == nullptr) return;
     if (collider_->isColliding(target_->getCollider())) {
-        // TODO: attack
-        SDL_Log("Circle vs Circle");
+        if (stats_ && target_->getStats()) {
+            target_->takeDamage(stats_->getDamage());
+        }
     }
 }
 

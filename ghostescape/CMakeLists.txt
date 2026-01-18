@@ -50,6 +50,8 @@ add_executable(${TARGET}
         src/enemy.h
         src/affiliate/collider.cpp
         src/affiliate/collider.h
+        src/raw/stats.cpp
+        src/raw/stats.h
 )
 
 ## 链接库
